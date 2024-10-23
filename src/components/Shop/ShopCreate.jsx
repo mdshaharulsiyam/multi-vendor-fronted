@@ -53,9 +53,10 @@ const ShopCreate = () => {
 
             .catch((error) => {
                 toast.error(error?.response?.data?.message);
-            });
-        navigate("/shop-login")
-        window.location.reload();
+            }).finally(() => {
+                navigate("/shop-login")
+                window.location.reload();
+            })
 
 
 

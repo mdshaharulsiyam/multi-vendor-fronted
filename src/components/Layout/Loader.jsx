@@ -11,9 +11,15 @@ const Loader = () => {
             preserveAspectRatio: "xMidYMid slice",
         },
     };
+    // return (
+    //     <div className="w-full h-screen flex items-center justify-center">
+    //         <Lottie options={defaultOptions} width={300} height={300} />
+    //     </div>
+    // );
     return (
-        <div className="w-full h-screen flex items-center justify-center">
+        <div id="loader" className="w-full h-screen flex items-center justify-center flex-col">
             <Lottie options={defaultOptions} width={300} height={300} />
+            <span class="loader"></span>
         </div>
     );
 };

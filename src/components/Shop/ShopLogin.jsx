@@ -12,13 +12,13 @@ const ShopLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [visible, setVisible] = useState(false)
-
+    const [loading, setLoading] = useState(false)
 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true)
         await axios
             .post(
                 `${server}/shop/login-shop`,
@@ -34,7 +34,9 @@ const ShopLogin = () => {
             })
             .catch((err) => {
                 toast.error(err?.response?.data?.message);
-            });
+            }).finally(() => {
+                setLoading(false)
+            });;
     };
 
     return (
@@ -127,10 +129,11 @@ const ShopLogin = () => {
                         </div>
                         <div>
                             <button
+                                disabled={loading}
                                 type='submit'
-                                className=' className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"'
+                                className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400`}
                             >
-                                Submit
+                                {loading ? <span class="loader"></span> : "Submit"}
                             </button>
                         </div>
 

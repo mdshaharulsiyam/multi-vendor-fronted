@@ -19,10 +19,10 @@ const ShopCreate = () => {
     const [avatar, setAvatar] = useState();
     const [password, setPassword] = useState("");
     const [visible, setVisible] = useState(false);
-
+    const [loading, setLoading] = useState(false)
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true)
         const config = { headers: { "Content-Type": "multipart/form-data" } };
         // meaning of uper line is that we are creating a new object with the name of config and the value of config is {headers:{'Content-Type':'multipart/form-data'}}  
 
@@ -54,6 +54,7 @@ const ShopCreate = () => {
             .catch((error) => {
                 toast.error(error?.response?.data?.message);
             }).finally(() => {
+                setLoading(false)
                 navigate("/shop-login")
                 window.location.reload();
             })
@@ -251,10 +252,11 @@ const ShopCreate = () => {
 
                         <div>
                             <button
+                                disabled={loading}
                                 type='submit'
-                                className=' className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"'
+                                className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400`}
                             >
-                                Submit
+                                {loading ? <span class="loader"></span> : "Submit"}
                             </button>
                         </div>
 

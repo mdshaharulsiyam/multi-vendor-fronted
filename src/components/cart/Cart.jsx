@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { backend_url } from "../../server";
 import { addTocart, removeFromCart } from "../../redux/actions/cart";
-
+import { MdDeleteForever } from "react-icons/md";
 const Cart = ({ setOpenCart }) => {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -124,7 +124,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   return (
     <>
       <div className="border-b p-4">
-        <div className="w-full flex items-center">
+        <div className="w-full flex items-center relative">
           <div>
             <div
               className={`bg-[#e44343] border border-[#e4434373] rounded-full w-[25px] h-[25px] ${styles.noramlFlex} justify-center cursor-pointer`}
@@ -156,10 +156,11 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
               US${totalPrice}
             </h4>
           </div>
-          <RxCross1
-            size={99}
-            color="#7d879c"
-            className="cursor-pointer"
+          <MdDeleteForever
+            size={18}
+            color="red"
+            // color="#7d879c"
+            className="cursor-pointer absolute top-1 right-0 "
             onClick={() => removeFromCartHandler(data)}
           />
         </div>

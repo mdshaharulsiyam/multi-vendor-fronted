@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { server } from "../server";
 import axios from 'axios';
 
@@ -8,7 +8,7 @@ import axios from 'axios';
 const ActivationPage = () => {
     const { activation_token } = useParams();
     const [error, setError] = useState(false);
-
+    const navigate = useNavigate()
     useEffect(() => {
         if (activation_token) {
             const activationEmail = async () => {
@@ -17,7 +17,11 @@ const ActivationPage = () => {
                         .post(`${server}/user/activation`, {
                             activation_token
                         })
-                    console.log(res?.data?.message);
+                    const timeOut = setTimeout(() => {
+                        navigate('/shop-login');
+                    }, 500);
+                    return () => clearTimeout(timeOut);
+                    // console.log(res?.data?.message);
                 } catch (err) {
                     console.log(err?.response?.data?.message);
                     setError(true);

@@ -46,8 +46,8 @@ input[type="number"] {
 
 
 .loader {
-    width: 48px;
-    height: 48px;
+    width: 25px;
+    height: 25px;
     border: 5px solid #FFF;
     border-bottom-color: #5900ff;
     border-radius: 50%;

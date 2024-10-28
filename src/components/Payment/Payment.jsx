@@ -118,14 +118,12 @@ const Payment = () => {
             );
 
             const client_secret = data.client_secret;
-
             if (!stripe || !elements) return;
             const result = await stripe.confirmCardPayment(client_secret, {
                 payment_method: {
                     card: elements.getElement(CardNumberElement),
                 },
             });
-
             if (result.error) {
                 toast.error(result.error.message);
             } else {
@@ -331,7 +329,7 @@ const PaymentInfo = ({
             <br />
             {/* paypal payment */}
             <div>
-                <div className="flex w-full pb-5 border-b mb-2">
+                {/* <div className="flex w-full pb-5 border-b mb-2">
                     <div
                         className="w-[25px] h-[25px] rounded-full bg-transparent border-[3px] border-[#1d1a1ab4] relative flex items-center justify-center"
                         onClick={() => setSelect(2)}
@@ -343,10 +341,10 @@ const PaymentInfo = ({
                     <h4 className="text-[18px] pl-2 font-[600] text-[#000000b1]">
                         Pay with Paypal
                     </h4>
-                </div>
+                </div> */}
 
                 {/* pay with payment  */}
-                {select === 2 ? (
+                {/* {select === 2 ? (
                     <div className="w-full flex border-b">
                         <div
                             className={`${styles.button} !bg-[#f63b60] text-white h-[45px] rounded-[5px] cursor-pointer text-[18px] font-[600]`}
@@ -383,7 +381,7 @@ const PaymentInfo = ({
                         }
 
                     </div>
-                ) : null}
+                ) : null} */}
             </div>
 
             <br />

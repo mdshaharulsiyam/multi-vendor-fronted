@@ -23,10 +23,10 @@ const ProductDetailsPage = () => {
 
     useEffect(() => {
         if (eventData !== null) {
-            const data = allEvents && allEvents.find((i) => i._id === id);
+            const data = allEvents && allEvents.find((i) => i?._id === id);
             setData(data);
         } else {
-            const data = allProducts && allProducts.find((i) => i._id === id);
+            const data = allProducts && allProducts.find((i) => i?._id === id);
             setData(data);
         }
         /* `window.scrollTo(0, 0)` is a JavaScript method that scrolls the window to the top of the page.

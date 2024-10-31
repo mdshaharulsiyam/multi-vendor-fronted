@@ -16,8 +16,8 @@ const DashboardHero = () => {
     const { products } = useSelector((state) => state.products);
 
     useEffect(() => {
-        dispatch(getAllOrdersOfShop(seller._id));
-        dispatch(getAllProductsShop(seller._id));
+        dispatch(getAllOrdersOfShop(seller?._id));
+        dispatch(getAllProductsShop(seller?._id));
     }, [dispatch]);
 
     /*  is calculating the available balance of the seller and rounding it to 2 decimal places. */
@@ -79,7 +79,7 @@ const DashboardHero = () => {
 
     orders && orders.forEach((item) => {
         row.push({
-            id: item._id,
+            id: item?._id,
             itemsQty: item.cart.reduce((acc, item) => acc + item.qty, 0),
             total: "US$ " + item.totalPrice,
             status: item.status,

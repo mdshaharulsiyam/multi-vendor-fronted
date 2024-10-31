@@ -98,16 +98,16 @@ const DashboardMessages = () => {
     e.preventDefault();
 
     const message = {
-      sender: seller._id,
+      sender: seller?._id,
       text: newMessage,
-      conversationId: currentChat._id,
+      conversationId: currentChat?._id,
     };
     const receiverId = currentChat.members.find(
-      (member) => member.id !== seller._id
+      (member) => member.id !== seller?._id
     );
 
     socketId.emit("sendMessage", {
-      senderId: seller._id,
+      senderId: seller?._id,
       receiverId,
       text: newMessage,
     });
@@ -132,13 +132,13 @@ const DashboardMessages = () => {
   const updateLastMessage = async () => {
     socketId.emit("updateLastMessage", {
       lastMessage: newMessage,
-      lastMessageId: seller._id,
+      lastMessageId: seller?._id,
     });
 
     await axios
-      .put(`${server}/conversation/update-last-message/${currentChat._id}`, {
+      .put(`${server}/conversation/update-last-message/${currentChat?._id}`, {
         lastMessage: newMessage,
-        lastMessageId: seller._id,
+        lastMessageId: seller?._id,
       })
       .then((res) => {
         console.log(res?.data?.conversation);
@@ -161,16 +161,16 @@ const DashboardMessages = () => {
     const formData = new FormData();
 
     formData.append("images", e);
-    formData.append("sender", seller._id);
+    formData.append("sender", seller?._id);
     formData.append("text", newMessage);
-    formData.append("conversationId", currentChat._id);
+    formData.append("conversationId", currentChat?._id);
 
     const receiverId = currentChat.members.find(
-      (member) => member !== seller._id
+      (member) => member !== seller?._id
     );
 
     socketId.emit("sendMessage", {
-      senderId: seller._id,
+      senderId: seller?._id,
       receiverId,
       images: e,
     });
@@ -194,10 +194,10 @@ const DashboardMessages = () => {
 
   const updateLastMessageForImage = async () => {
     await axios.put(
-      `${server}/conversation/update-last-message/${currentChat._id}`,
+      `${server}/conversation/update-last-message/${currentChat?._id}`,
       {
         lastMessage: "Photo",
-        lastMessageId: seller._id,
+        lastMessageId: seller?._id,
       }
     );
   };
@@ -222,7 +222,7 @@ const DashboardMessages = () => {
                 index={index}
                 setOpen={setOpen}
                 setCurrentChat={setCurrentChat}
-                me={seller._id}
+                me={seller?._id}
                 setUserData={setUserData}
                 userData={userData}
                 online={onlineCheck(item)}
@@ -239,7 +239,7 @@ const DashboardMessages = () => {
           setNewMessage={setNewMessage}
           sendMessageHandler={sendMessageHandler}
           messages={messages}
-          sellerId={seller._id}
+          sellerId={seller?._id}
           userData={userData}
           activeStatus={activeStatus}
           scrollRef={scrollRef}
@@ -289,7 +289,7 @@ const MessageList = ({
         }  cursor-pointer`}
       onClick={(e) =>
         setActive(index) ||
-        handleClick(data._id) ||
+        handleClick(data?._id) ||
         setCurrentChat(data) ||
         setUserData(user) ||
         setActiveStatus(online)
@@ -312,7 +312,7 @@ const MessageList = ({
         <p className="text-[16px] text-[#000c]">
           {data?.lastMessageId !== user?._id
             ? "You:"
-            : (user?.name ? user.name.split(" ")[0] : "") + ": "}
+            : (user?.name ? user?.name.split(" ")[0] : "") + ": "}
           {data?.lastMessage}
         </p>
       </div>

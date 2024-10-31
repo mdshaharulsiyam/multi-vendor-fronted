@@ -69,7 +69,7 @@ const Footer = () => {
                    text-sm cursor-pointer leading-6"
                                 to={link.link}
                             >
-                                {link.name}
+                                {link?.name}
                             </Link>
                         </li>
                     ))}
@@ -84,7 +84,7 @@ const Footer = () => {
                    text-sm cursor-pointer leading-6"
                                 to={link.link}
                             >
-                                {link.name}
+                                {link?.name}
                             </Link>
                         </li>
                     ))}
@@ -99,7 +99,7 @@ const Footer = () => {
                    text-sm cursor-pointer leading-6"
                                 to={link.link}
                             >
-                                {link.name}
+                                {link?.name}
                             </Link>
                         </li>
                     ))}

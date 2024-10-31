@@ -12,7 +12,7 @@ const BestSellingPage = () => {
   useEffect(() => {
     if (Array.isArray(allProducts)) {
       const sortedProducts = [...allProducts].sort(
-        (a, b) => b.sold_out - a.sold_out
+        (a, b) => b?.sold_out - a?.sold_out
       );
       setData(sortedProducts);
       window.scrollTo(0, 0);

@@ -10,8 +10,8 @@ import { toast } from "react-toastify";
 const ShopSettings = () => {
     const { seller } = useSelector((state) => state.seller);
     const [avatar, setAvatar] = useState();
-    const [name, setName] = useState(seller && seller.name);
-    const [description, setDescription] = useState(seller && seller.description ? seller.description : "");
+    const [name, setName] = useState(seller && seller?.name);
+    const [description, setDescription] = useState(seller && seller?.description ? seller?.description : "");
     const [address, setAddress] = useState(seller && seller.address);
     const [phoneNumber, setPhoneNumber] = useState(seller && seller.phoneNumber);
     const [zipCode, setZipcode] = useState(seller && seller.zipCode);
@@ -100,7 +100,7 @@ const ShopSettings = () => {
                         </div>
                         <input
                             type="name"
-                            placeholder={`${seller.name}`}
+                            placeholder={`${seller?.name}`}
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}
@@ -114,7 +114,7 @@ const ShopSettings = () => {
                         <input
                             type="name"
                             placeholder={`${seller?.description
-                                ? seller.description
+                                ? seller?.description
                                 : "Enter your shop description"
                                 }`}
                             value={description}

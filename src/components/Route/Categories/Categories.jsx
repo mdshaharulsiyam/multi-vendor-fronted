@@ -17,7 +17,7 @@ const Categories = () => {
                                 {i.icon}
                                 <div className='px-3'>
                                     <h3 className='font-bold text-sm md:text-base'>{i.title}</h3>
-                                    <p className="text-xs md:text-sm">{i.Description}</p>
+                                    <p className="text-xs md:text-sm">{i?.description}</p>
                                 </div>
                             </div>
                         ))

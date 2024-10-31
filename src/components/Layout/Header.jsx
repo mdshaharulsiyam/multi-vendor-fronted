@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
-import { productData, categoriesData } from "../../static/data";
+import { categoriesData } from "../../static/data";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -41,7 +41,7 @@ const Header = ({ activeHeading }) => {
     const filteredProducts =
       allProducts &&
       allProducts.filter((product) =>
-        product.name.toLowerCase().includes(term.toLowerCase())
+        product?.name.toLowerCase().includes(term.toLowerCase())
       );
     setSearchData(filteredProducts);
   };
@@ -85,17 +85,17 @@ const Header = ({ activeHeading }) => {
                 <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
                   {searchData &&
                     searchData.map((i, index) => {
-                      const d = i.name;
+                      const d = i?.name;
 
                       return (
-                        <Link to={`/product/${i._id}`}>
+                        <Link to={`/product/${i?._id}`}>
                           <div className="w-full flex items-start-py-3">
                             <img
                               src={`${backend_url}${i?.images[0]}`}
                               alt="img"
                               className="w-[40px] h-[40px] mr-[10px]"
                             />
-                            <h1>{i.name}</h1>
+                            <h1>{i?.name}</h1>
                           </div>
                         </Link>
                       );
@@ -297,7 +297,7 @@ const Header = ({ activeHeading }) => {
               {searchData && (
                 <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3">
                   {searchData.map((i) => {
-                    const d = i.name;
+                    const d = i?.name;
 
                     const Product_name = d.replace(/\s+/g, "-");
                     return (
@@ -308,7 +308,7 @@ const Header = ({ activeHeading }) => {
                             alt=""
                             className="w-[50px] mr-2"
                           />
-                          <h5>{i.name}</h5>
+                          <h5>{i?.name}</h5>
                         </div>
                       </Link>
                     );

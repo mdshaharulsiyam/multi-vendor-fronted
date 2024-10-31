@@ -9,7 +9,7 @@ const ShopCreatePage = () => {
     // if user is login then redirect to home page
     useEffect(() => {
         if (isSeller === true) {
-            navigate(`/shop/${seller._id}`);
+            navigate(`/shop/${seller?._id}`);
         }
     })
     return (

@@ -22,7 +22,7 @@ import { getAllOrdersOfUser } from '../../redux/actions/order';
 
 const ProfileContent = ({ active }) => {
     const { user, error, successMessage } = useSelector((state) => state.user);
-    const [name, setName] = useState(user && user.name);
+    const [name, setName] = useState(user && user?.name);
     const [email, setEmail] = useState(user && user.email);
     const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
     const [password, setPassword] = useState("");
@@ -213,7 +213,7 @@ const AllOrders = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllOrdersOfUser(user._id));
+        dispatch(getAllOrdersOfUser(user?._id));
     }, []);
 
 
@@ -275,7 +275,7 @@ const AllOrders = () => {
     orders &&
         orders.forEach((item) => {
             row.push({
-                id: item._id,
+                id: item?._id,
                 itemsQty: item.cart?.length,
                 total: "US$ " + item.totalPrice,
                 status: item.status,
@@ -307,7 +307,7 @@ const AllRefundOrders = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllOrdersOfUser(user._id));
+        dispatch(getAllOrdersOfUser(user?._id));
     }, []);
 
 
@@ -369,7 +369,7 @@ const AllRefundOrders = () => {
     eligibleOrders &&
         eligibleOrders.forEach((item) => {
             row.push({
-                id: item._id,
+                id: item?._id,
                 itemsQty: item.cart?.length,
                 total: "US$ " + item.totalPrice,
                 status: item.status,
@@ -398,7 +398,7 @@ const TrackOrder = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllOrdersOfUser(user._id));
+        dispatch(getAllOrdersOfUser(user?._id));
     }, []);
 
 
@@ -459,7 +459,7 @@ const TrackOrder = () => {
     orders &&
         orders.forEach((item) => {
             row.push({
-                id: item._id,
+                id: item?._id,
                 itemsQty: item.cart?.length,
                 total: "US$ " + item.totalPrice,
                 status: item.status,
@@ -623,7 +623,7 @@ const Address = () => {
     }
 
     const handleDelete = (item) => {
-        const id = item._id;
+        const id = item?._id;
         dispatch(deleteUserAddress(id));
     }
 
@@ -669,7 +669,7 @@ const Address = () => {
                                                             key={item.isoCode}
                                                             value={item.isoCode}
                                                         >
-                                                            {item.name}
+                                                            {item?.name}
                                                         </option>
                                                     ))}
                                             </select>
@@ -695,7 +695,7 @@ const Address = () => {
                                                             key={item.isoCode}
                                                             value={item.isoCode}
                                                         >
-                                                            {item.name}
+                                                            {item?.name}
                                                         </option>
                                                     ))}
                                             </select>
@@ -752,10 +752,10 @@ const Address = () => {
                                                     addressTypeData.map((item) => (
                                                         <option
                                                             className='block pb-2'
-                                                            key={item.name}
-                                                            value={item.name}
+                                                            key={item?.name}
+                                                            value={item?.name}
                                                         >
-                                                            {item.name}
+                                                            {item?.name}
                                                         </option>
                                                     ))}
                                             </select>

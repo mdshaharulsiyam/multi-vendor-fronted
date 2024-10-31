@@ -22,10 +22,10 @@ const UserOrderDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getAllOrdersOfUser(user._id));
-  }, [dispatch, user._id]);
+    dispatch(getAllOrdersOfUser(user?._id));
+  }, [dispatch, user?._id]);
 
-  const data = orders && orders.find((item) => item._id === id);
+  const data = orders && orders.find((item) => item?._id === id);
 
   const reviewHandler = async (type) => {
     try {
@@ -72,7 +72,7 @@ const UserOrderDetails = () => {
       })
       .then((res) => {
         toast.success(res?.data?.message);
-        dispatch(getAllOrdersOfUser(user._id));
+        dispatch(getAllOrdersOfUser(user?._id));
       })
       .catch((error) => {
         toast.error(error?.response?.data?.message);
@@ -110,9 +110,9 @@ const UserOrderDetails = () => {
                 className="w-[80x] h-[80px]"
               />
               <div className="w-full">
-                <h5 className="pl-3 text-[20px]">{item.name}</h5>
+                <h5 className="pl-3 text-[20px]">{item?.name}</h5>
                 <h5 className="pl-3 text-[20px] text-[#00000091]">
-                  US${item.discountPrice} x {item.qty}
+                  US${item?.discountPrice} x {item.qty}
                 </h5>
               </div>
               {!item.isReviewed && data?.status === "Delivered" ? (

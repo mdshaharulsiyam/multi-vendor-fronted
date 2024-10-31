@@ -55,7 +55,7 @@ const Checkout = () => {
     };
 
     const subTotalPrice = cart.reduce(
-        (acc, item) => acc + item.qty * item.discountPrice,
+        (acc, item) => acc + item.qty * item?.discountPrice,
         0
     );
 
@@ -82,7 +82,7 @@ const Checkout = () => {
                 } else {
 
                     const eligiblePrice = isCouponValid.reduce(
-                        (acc, item) => acc + item.qty * item.discountPrice,
+                        (acc, item) => acc + item.qty * item?.discountPrice,
                         0
                     );
                     const discountPrice = (eligiblePrice * couponCodeValue) / 100;
@@ -173,7 +173,7 @@ const ShippingInfo = ({
                         <label className="block pb-2">Full Name</label>
                         <input
                             type="text"
-                            value={user && user.name}
+                            value={user && user?.name}
                             required
                             className={`${styles.input} !w-[95%]`}
                         />
@@ -225,7 +225,7 @@ const ShippingInfo = ({
                             {Country &&
                                 Country.getAllCountries().map((item) => (
                                     <option key={item.isoCode} value={item.isoCode}>
-                                        {item.name}
+                                        {item?.name}
                                     </option>
                                 ))}
                         </select>
@@ -243,7 +243,7 @@ const ShippingInfo = ({
                             {State &&
                                 State.getStatesOfCountry(country).map((item) => (
                                     <option key={item.isoCode} value={item.isoCode}>
-                                        {item.name}
+                                        {item?.name}
                                     </option>
                                 ))}
                         </select>

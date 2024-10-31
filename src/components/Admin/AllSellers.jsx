@@ -104,7 +104,7 @@ const AllSellers = () => {
   sellers &&
     sellers.forEach((item) => {
       row.push({
-        id: item._id,
+        id: item?._id,
         name: item?.name,
         email: item?.email,
         joinedAt: item.createdAt.slice(0, 10),

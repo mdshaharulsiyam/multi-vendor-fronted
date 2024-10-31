@@ -19,7 +19,7 @@ const ShopProfileData = ({ isOwner }) => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getAllEventsShop(seller._id));
+        dispatch(getAllEventsShop(seller?._id));
     }, [dispatch]);
 
     const [active, setActive] = useState(1);
@@ -118,7 +118,7 @@ const ShopProfileData = ({ isOwner }) => {
                                 />
                                 <div className="pl-2">
                                     <div className="flex w-full items-center">
-                                        <h1 className="font-[600] pr-2">{item.user.name}</h1>
+                                        <h1 className="font-[600] pr-2">{item.user?.name}</h1>
                                         <Ratings rating={item.rating} />
                                     </div>
                                     <p className="font-[400] text-[#000000a7]">{item?.comment}</p>

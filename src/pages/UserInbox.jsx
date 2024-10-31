@@ -98,9 +98,9 @@ const UserInbox = () => {
     e.preventDefault();
 
     const message = {
-      sender: user._id,
+      sender: user?._id,
       text: newMessage,
-      conversationId: currentChat._id,
+      conversationId: currentChat?._id,
     };
     const receiverId = currentChat.members.find(
       (member) => member !== user?._id
@@ -132,13 +132,13 @@ const UserInbox = () => {
   const updateLastMessage = async () => {
     socketId.emit("updateLastMessage", {
       lastMessage: newMessage,
-      lastMessageId: user._id,
+      lastMessageId: user?._id,
     });
 
     await axios
-      .put(`${server}/conversation/update-last-message/${currentChat._id}`, {
+      .put(`${server}/conversation/update-last-message/${currentChat?._id}`, {
         lastMessage: newMessage,
-        lastMessageId: user._id,
+        lastMessageId: user?._id,
       })
       .then((res) => {
         setNewMessage("");
@@ -158,16 +158,16 @@ const UserInbox = () => {
     const formData = new FormData();
 
     formData.append("images", e);
-    formData.append("sender", user._id);
+    formData.append("sender", user?._id);
     formData.append("text", newMessage);
-    formData.append("conversationId", currentChat._id);
+    formData.append("conversationId", currentChat?._id);
 
     const receiverId = currentChat.members.find(
-      (member) => member !== user._id
+      (member) => member !== user?._id
     );
 
     socketId.emit("sendMessage", {
-      senderId: user._id,
+      senderId: user?._id,
       receiverId,
       images: e,
     });
@@ -191,10 +191,10 @@ const UserInbox = () => {
 
   const updateLastMessageForImage = async () => {
     await axios.put(
-      `${server}/conversation/update-last-message/${currentChat._id}`,
+      `${server}/conversation/update-last-message/${currentChat?._id}`,
       {
         lastMessage: "Photo",
-        lastMessageId: user._id,
+        lastMessageId: user?._id,
       }
     );
   };
@@ -237,7 +237,7 @@ const UserInbox = () => {
           setNewMessage={setNewMessage}
           sendMessageHandler={sendMessageHandler}
           messages={messages}
-          sellerId={user._id}
+          sellerId={user?._id}
           userData={userData}
           activeStatus={activeStatus}
           scrollRef={scrollRef}
@@ -288,7 +288,7 @@ const MessageList = ({
         }  cursor-pointer`}
       onClick={(e) =>
         setActive(index) ||
-        handleClick(data._id) ||
+        handleClick(data?._id) ||
         setCurrentChat(data) ||
         setUserData(user) ||
         setActiveStatus(online)

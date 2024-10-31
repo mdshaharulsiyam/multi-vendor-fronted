@@ -20,7 +20,7 @@ const Cart = ({ setOpenCart }) => {
 
   // Total price
   const totalPrice = cart.reduce(
-    (acc, item) => acc + item.qty * item.discountPrice,
+    (acc, item) => acc + item.qty * item?.discountPrice,
     0
   );
 
@@ -98,7 +98,7 @@ const Cart = ({ setOpenCart }) => {
 
 const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
   const [value, setValue] = useState(data.qty);
-  const totalPrice = data.discountPrice * value;
+  const totalPrice = data?.discountPrice * value;
 
   const increment = (data) => {
     if (data.stock < value) {
@@ -147,10 +147,10 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           />
 
           <div className="pl-[15px]">
-            <h1>{data.name}</h1>
+            <h1>{data?.name}</h1>
             <h4 className="font-[400] text-[15px] text-[#00000082]">
               {" "}
-              ${data.discountPrice} * {value}
+              ${data?.discountPrice} * {value}
             </h4>
             <h4 className="font-[400] text-[17px] pt-[3px]  text-[#d02222] font-Roboto ">
               US${totalPrice}

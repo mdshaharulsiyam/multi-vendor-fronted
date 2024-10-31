@@ -15,7 +15,7 @@ const AllProducts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProductsShop(seller._id));
+    dispatch(getAllProductsShop(seller?._id));
   }, [dispatch]);
 
   const handleDelete = (id) => {
@@ -95,11 +95,11 @@ const AllProducts = () => {
   products &&
     products.forEach((item) => {
       row.push({
-        id: item._id,
-        name: item.name,
-        price: "US$ " + item.discountPrice,
+        id: item?._id,
+        name: item?.name,
+        price: "US$ " + item?.discountPrice,
         Stock: item.stock,
-        sold: item.sold_out,
+        sold: item?.sold_out,
       });
     });
 

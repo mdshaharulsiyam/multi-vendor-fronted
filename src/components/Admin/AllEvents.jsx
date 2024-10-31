@@ -71,11 +71,11 @@ const AllEvents = () => {
   events &&
     events.forEach((item) => {
       row.push({
-        id: item._id,
-        name: item.name,
-        price: "US$ " + item.discountPrice,
+        id: item?._id,
+        name: item?.name,
+        price: "US$ " + item?.discountPrice,
         Stock: item.stock,
-        sold: item.sold_out,
+        sold: item?.sold_out,
       });
     });
 

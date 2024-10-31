@@ -86,8 +86,8 @@ const AllUsers = () => {
   users &&
     users.forEach((item) => {
       row.push({
-        id: item._id,
-        name: item.name,
+        id: item?._id,
+        name: item?.name,
         email: item.email,
         role: item.role,
         joinedAt: item.createdAt.slice(0, 10),

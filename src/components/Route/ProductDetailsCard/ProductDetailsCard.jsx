@@ -38,7 +38,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
     // Add to cart
     const addToCartHandler = (id) => {
-        const isItemExists = cart && cart.find((i) => i._id === id);
+        const isItemExists = cart && cart.find((i) => i?._id === id);
 
         if (isItemExists) {
             toast.error("item already in cart!")
@@ -55,7 +55,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
 
     useEffect(() => {
-        if (wishlist && wishlist.find((i) => i._id === data._id)) {
+        if (wishlist && wishlist.find((i) => i?._id === data?._id)) {
             setClick(true);
         } else {
             setClick(false);
@@ -92,7 +92,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                                     <div className='w-full 800px:w-[50%]'>
                                         <img src={`${backend_url}${data?.images && data?.images[0]}`} alt="img" />
                                         <div className='flex' >
-                                            <Link to={`/shop/preview/${data.shop._id}`} className="flex">
+                                            <Link to={`/shop/preview/${data.shop?._id}`} className="flex">
 
                                                 <img
                                                     src={`${backend_url}${data?.shop?.avatar}`}
@@ -101,7 +101,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                                                 />
                                                 <div>
                                                     <h3 className={`${styles.shop_name}`}>
-                                                        {data.shop.name}
+                                                        {data.shop?.name}
                                                     </h3>
                                                     <h5 className="pb-3 text-[15px]">
                                                         (4.5) Ratings
@@ -126,16 +126,16 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                                         className='w-full 800px:w-[50%] pt-5 pl-[5px] pr-[5px]'
                                     >
                                         <h1 className={`${styles.productTitle} text-[20px]`} >
-                                            {data.name}
+                                            {data?.name}
                                         </h1>
-                                        <p>{data.description}</p>
+                                        <p>{data?.description}</p>
 
                                         <div className='flex  pt-3 '>
-                                            <h4 className={`${styles.productDiscountPrice}`}>
-                                                {data.discountPrice}$
+                                            <h4 className={`${styles?.productDiscountPrice}`}>
+                                                {data?.discountPrice}$
                                             </h4>
                                             <h3 className={`${styles.price}`}>
-                                                {data.originalPrice ? data.originalPrice + "$" : null}
+                                                {data?.originalPrice ? data?.originalPrice + "$" : null}
                                             </h3>
                                         </div>
 
@@ -187,7 +187,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
                                         <div
                                             className={`${styles.button} mt-6 rounded-[4px] h-11 flex items-center`}
-                                            onClick={() => addToCartHandler(data._id)}
+                                            onClick={() => addToCartHandler(data?._id)}
                                         >
                                             <span className="text-[#fff] flex items-center">
                                                 Add to cart <AiOutlineShoppingCart className="ml-1" />

@@ -71,7 +71,7 @@ const AdminDashboardMain = () => {
   adminOrders &&
     adminOrders.forEach((item) => {
       row.push({
-        id: item._id,
+        id: item?._id,
         itemsQty: item?.cart?.reduce((acc, item) => acc + item.qty, 0),
         total: item?.totalPrice + " $",
         status: item?.status,

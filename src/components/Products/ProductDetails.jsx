@@ -32,8 +32,8 @@ const ProductDetails = ({ data }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getAllProductsShop(data && data?.shop._id));
-    if (wishlist && wishlist.find((i) => i._id === data?._id)) {
+    dispatch(getAllProductsShop(data && data?.shop?._id));
+    if (wishlist && wishlist.find((i) => i?._id === data?._id)) {
       setClick(true);
     } else {
       setClick(false);
@@ -54,7 +54,7 @@ const ProductDetails = ({ data }) => {
 
   // Add to cart
   const addToCartHandler = (id) => {
-    const isItemExists = cart && cart.find((i) => i._id === id);
+    const isItemExists = cart && cart.find((i) => i?._id === id);
 
     if (isItemExists) {
       toast.error("item already in cart!");
@@ -97,9 +97,9 @@ const ProductDetails = ({ data }) => {
   // Sand message
   const handleMessageSubmit = async () => {
     if (isAuthenticated) {
-      const groupTitle = data._id + user._id;
-      const userId = user._id;
-      const sellerId = data.shop._id;
+      const groupTitle = data?._id + user?._id;
+      const userId = user?._id;
+      const sellerId = data.shop?._id;
       await axios
         .post(`${server}/conversation/create-new-conversation`, {
           groupTitle,
@@ -161,14 +161,14 @@ const ProductDetails = ({ data }) => {
               </div>
               {/* Rtght */}
               <div className="w-full 800px:w-[50%] pt-5 ">
-                <h1 className={`${styles.productTitle}`}>{data.name}</h1>
-                <p>{data.description}</p>
+                <h1 className={`${styles.productTitle}`}>{data?.name}</h1>
+                <p>{data?.description}</p>
                 <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice}`}>
-                    {data.discountPrice}$
+                  <h4 className={`${styles?.productDiscountPrice}`}>
+                    {data?.discountPrice}$
                   </h4>
                   <h3 className={`${styles.price}`}>
-                    {data.originalPrice ? data.originalPrice + "$" : null}
+                    {data?.originalPrice ? data?.originalPrice + "$" : null}
                   </h3>
                 </div>
 
@@ -215,14 +215,14 @@ const ProductDetails = ({ data }) => {
                 </div>
                 <div
                   className={`${styles.button} !mt-6 !rounded !h-11 flex items-center`}
-                  onClick={() => addToCartHandler(data._id)}
+                  onClick={() => addToCartHandler(data?._id)}
                 >
                   <span className="text-white flex items-center">
                     Add to Cart <AiOutlineShoppingCart className="ml-1" />
                   </span>
                 </div>
                 <div className="flex items-center pt-8">
-                  <Link to={`/shop/preview/${data?.shop._id}`}>
+                  <Link to={`/shop/preview/${data?.shop?._id}`}>
                     <img
                       src={`${backend_url}${data?.shop?.avatar}`}
                       alt=""
@@ -231,11 +231,11 @@ const ProductDetails = ({ data }) => {
                   </Link>
 
                   <div className="pr-8">
-                    <Link to={`/shop/preview/${data?.shop._id}`}>
+                    <Link to={`/shop/preview/${data?.shop?._id}`}>
                       <h3
                         className={`${styles.shop_name} pb-1 pt-1 cursor-pointer`}
                       >
-                        {data.shop.name}
+                        {data.shop?.name}
                       </h3>
                     </Link>
                     <h5 className="pb-3 text-[15px]">
@@ -330,7 +330,7 @@ const ProductDetailsInfo = ({
       {active === 1 ? (
         <>
           <p className="py-2 text-[18px] leading-8 pb-10 whitespace-pre-line  ">
-            {data.description}
+            {data?.description}
           </p>
         </>
       ) : null}
@@ -348,7 +348,7 @@ const ProductDetailsInfo = ({
                 />
                 <div className="pl-2 ">
                   <div className="w-full flex items-center">
-                    <h1 className="font-[500] mr-3">{item.user.name}</h1>
+                    <h1 className="font-[500] mr-3">{item.user?.name}</h1>
                     <Ratings rating={data?.ratings} />
                   </div>
                   <p>{item.comment}</p>
@@ -369,7 +369,7 @@ const ProductDetailsInfo = ({
           <div className="w-full block 800px:flex p-5 ">
             <div className="w-full 800px:w-[50%]">
               <div className="flex items-center">
-                <Link to={`/shop/preview/${data.shop._id}`}>
+                <Link to={`/shop/preview/${data.shop?._id}`}>
                   <div className="flex items-center">
                     <img
                       src={`${backend_url}${data?.shop?.avatar}`}
@@ -378,7 +378,7 @@ const ProductDetailsInfo = ({
                     />
                     <div className="pl-3">
                       <h3 className={`${styles.shop_name}`}>
-                        {data.shop.name}
+                        {data.shop?.name}
                       </h3>
                       <h5 className="pb-3 text-[15px]">
                         ({averageRating}/5) Ratings
@@ -388,7 +388,7 @@ const ProductDetailsInfo = ({
                 </Link>
               </div>
 
-              <p className="pt-2">{data.shop.description}</p>
+              <p className="pt-2">{data.shop?.description}</p>
             </div>
 
             <div className="w-full 800px:w-[50%] mt-5 800px:mt-0 800px:flex flex-col items-end">

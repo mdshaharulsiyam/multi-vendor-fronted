@@ -243,7 +243,7 @@ const PaymentInfo = ({
                                 <div className="w-[50%]">
                                     <label className="block pb-2">Name on Card</label>
                                     <input required
-                                        value={user && user.name}
+                                        value={user && user?.name}
                                         className={`${styles.input} !w-[95%]`} />
                                 </div>
                                 <div className="w-[50%]">
@@ -439,7 +439,7 @@ const CartData = ({ orderData }) => {
             <br />
             <div className="flex justify-between border-b pb-3">
                 <h3 className="text-[16px] font-[400] text-[#000000a4]">Discount:</h3>
-                <h5 className="text-[18px] font-[600]">{orderData?.discountPrice ? "$" + orderData.discountPrice : "-"}
+                <h5 className="text-[18px] font-[600]">{orderData?.discountPrice ? "$" + orderData?.discountPrice : "-"}
                 </h5>
             </div>
             <h5 className="text-[18px] font-[600] text-end pt-3">

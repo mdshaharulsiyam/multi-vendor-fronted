@@ -17,7 +17,7 @@ import { backend_url } from "../../server";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx";
-
+import logo from '../../Assests/logo.png'
 const Header = ({ activeHeading }) => {
   const { isSeller } = useSelector((state) => state.seller);
   const { cart } = useSelector((state) => state.cart);
@@ -60,8 +60,8 @@ const Header = ({ activeHeading }) => {
         <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between ">
           <div>
             <Link to="/">
-              <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+              <img className="h-[55px]"
+                src={logo}
                 alt=""
               />
             </Link>
@@ -73,7 +73,7 @@ const Header = ({ activeHeading }) => {
               placeholder="Search for product..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
+              className="h-[40px] w-full px-2 border-[#30aee0] border-[2px] rounded-md"
             />
             <AiOutlineSearch
               size={30}
@@ -121,9 +121,8 @@ const Header = ({ activeHeading }) => {
 
       {/*  2nd part of header start */}
       <div
-        className={`${
-          active == true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-[#3321c8] h-[70px]`}
+        className={`${active == true ? "shadow-sm fixed top-0 left-0 z-10" : null
+          } transition hidden 800px:flex items-center justify-between w-full bg-[#30aee0] h-[70px]`}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
@@ -218,9 +217,8 @@ const Header = ({ activeHeading }) => {
 
       {/* Mobile Header */}
       <div
-        className={`${
-          active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-        }
+        className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
+          }
             w-full h-[60px] bg-[#fff] z-50 top-0 left-0 shadow-sm 800px:hidden`}
       >
         <div className="w-full flex items-center justify-between">
@@ -234,9 +232,9 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-                src="https://shopo.quomodothemes.website/assets/images/logo.svg"
+                src={logo}
                 alt=""
-                className="mt-3 cursor-pointer"
+                className="mt-3 cursor-pointer h-[55px]"
               />
             </Link>
           </div>

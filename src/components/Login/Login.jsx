@@ -107,7 +107,7 @@ const Login = () => {
                                     type="checkbox"
                                     name="remember-me"
                                     id="remember-me"
-                                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                    className="h-4 w-4 text-[#30aee0] focus:ring-blue-500 border-gray-300 rounded"
                                 />
                                 <label
                                     htmlFor="remember-me"
@@ -119,7 +119,7 @@ const Login = () => {
                             <div className='text-sm'>
                                 <a
                                     href=".forgot-password"
-                                    className="font-medium text-blue-600 hover:text-blue-500"
+                                    className="font-medium text-[#30aee0] hover:text-blue-500"
                                 >
                                     Forgot your password?
                                 </a>
@@ -128,7 +128,7 @@ const Login = () => {
                         <div>
                             <button disabled={loading}
                                 type='submit'
-                                className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400`}
+                                className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#30aee0] hover:bg-[#47cbff] disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400`}
                             >
                               {loading ? <span class="loader"></span> : "Submit"}
                             </button>
@@ -136,7 +136,7 @@ const Login = () => {
 
                         <div className={`${styles.noramlFlex} w-full`} >
                             <h4>Not have any account</h4>
-                            <Link to="/sign-up" className="text-blue-600 pl-2">
+                            <Link to="/sign-up" className="text-[#30aee0] pl-2">
                                 Sign Up
                             </Link>
                         </div>

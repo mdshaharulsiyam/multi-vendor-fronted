@@ -265,15 +265,15 @@ export const categoriesData = [
 export const footerProductLinks = [
   {
     name: "About us",
-    link: "/about",
+    link: "#",
   },
   {
     name: "Careers",
-    link: "/carrers",
+    link: "#",
   },
-  {
-    name: "Store Locations",
-  },
+  // {
+  //   name: "Store Locations",
+  // },
   {
     name: "Our Blog",
   },

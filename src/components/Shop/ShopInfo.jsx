@@ -32,6 +32,11 @@ const ShopInfo = ({ isOwner }) => {
 
 
     const logoutHandler = async () => {
+        document.cookie.split(";").forEach((cookie) => {
+            document.cookie = cookie
+              .replace(/^ +/, "") 
+              .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/"); // Set expiry to the past and path to root
+          });
         axios.get(`${server}/shop/logout`, {
             withCredentials: true,
         });

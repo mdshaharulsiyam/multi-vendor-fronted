@@ -21,6 +21,12 @@ const ProfileSidebar = ({ active, setActive }) => {
   const { user } = useSelector((state) => state.user);
 
   const logoutHandler = () => {
+    document.cookie.split(";").forEach((cookie) => {
+      document.cookie = cookie
+        .replace(/^ +/, "") 
+        .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/"); // Set expiry to the past and path to root
+    });
+    localStorage.clear();
     axios
       .get(`${server}/user/logout`, { withCredentials: true })
       .then((res) => {

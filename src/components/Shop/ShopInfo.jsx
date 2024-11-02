@@ -7,13 +7,11 @@ import { backend_url, server } from "../../server";
 import styles from "../../styles/styles";
 import Loader from "../Layout/Loader";
 
-
-
 const ShopInfo = ({ isOwner }) => {
     const [data, setData] = useState({});
     const { products } = useSelector((state) => state.products);
     const [isLoading, setIsLoading] = useState(false);
-const navigate =useNavigate()
+    const navigate = useNavigate()
     const { id } = useParams();
     const dispatch = useDispatch();
 
@@ -34,16 +32,17 @@ const navigate =useNavigate()
     const logoutHandler = async () => {
         document.cookie.split(";").forEach((cookie) => {
             document.cookie = cookie
-              .replace(/^ +/, "") 
-              .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/"); // Set expiry to the past and path to root
-          });
+                .replace(/^ +/, "")
+                .replace(/=.*/, "=;expires=" + new Date(0).toUTCString() + ";path=/"); // Set expiry to the past and path to root
+        });
+        localStorage.clear();
         axios.get(`${server}/shop/logout`, {
             withCredentials: true,
-        }).then(()=>{
+        }).then(() => {
             navigate('/')
             window.location.reload();
         });
-       
+
     };
 
 
